@@ -236,6 +236,4 @@ Potential future upgrades include:
 GitHub: [Anuj7411](https://github.com/Anuj7411)
 ```
 
-If you want, I can also give you:
-- a **shorter premium-looking README**
-- or a **very impressive GitHub About/LinkedIn project summary**
+
