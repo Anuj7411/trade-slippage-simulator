@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: slippage
+      POSTGRES_USER: slippage
+      POSTGRES_PASSWORD: slippage
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema/postgresql.sql:/docker-entrypoint-initdb.d/001_initial.sql
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  backend:
+    image: python:3.12-slim
+    working_dir: /app/backend
+    command: sh -c "pip install -r requirements.txt && python run.py"
+    volumes:
+      - ./:/app
+    environment:
+      SLIPPAGE_DB_PATH: /app/backend/data/slippage.db
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+
+  frontend:
+    image: node:20
+    working_dir: /app/frontend
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    volumes:
+      - ./:/app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
