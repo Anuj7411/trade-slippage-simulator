@@ -8,6 +8,10 @@ Trade Slippage Simulator is an interactive analytics platform that models how ex
 
 It is designed to demonstrate key market microstructure concepts through a live simulated trading environment and analytics dashboards.
 
+## Dashboard Preview
+
+![Dashboard Preview](docs/dashboard-preview.png)
+
 ## Features
 
 - Real-time order book simulation
