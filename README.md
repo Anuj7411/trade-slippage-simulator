@@ -1,93 +1,43 @@
 # Trade Slippage Simulator
 
-A full-stack trading execution simulator that models slippage, order book dynamics, routing decisions, and execution quality in a realistic market environment.
+A full-stack trading execution simulator for slippage analysis, order book visualization, and execution strategy benchmarking.
 
 ## Overview
 
-Trade Slippage Simulator is an interactive analytics platform designed to help understand how trading costs arise when executing orders in electronic markets. It combines a simulated live market, execution strategy comparison, and analytics dashboards in a single application.
+Trade Slippage Simulator is an interactive analytics platform that models how execution quality changes with order size, liquidity, spread, volatility, timing, venue choice, and execution strategy.
 
-The project focuses on how execution quality changes based on:
+It is designed to demonstrate key market microstructure concepts through a live simulated trading environment and analytics dashboards.
 
-- order size
-- liquidity
-- bid-ask spread
-- market volatility
-- execution timing
-- venue selection
-- execution algorithm choice
+## Features
 
-## Key Concepts
+- Real-time order book simulation
+- Pre-trade slippage estimation
+- Execution algorithm comparison
+- Venue routing analysis
+- Order sizing optimization
+- Cost attribution dashboard
+- Execution quality dashboard
+- Leaderboard and gamified tracking
 
-This project is built around the idea of **slippage**, which can be understood as:
+## Core Concepts
+
+This project is based on the execution cost framework:
 
 ```text
 Slippage = Market Impact + Bid-Ask Cost + Opportunity Cost
 ```
 
-It also explores core market microstructure concepts such as:
-
-- order book depth
-- spread behavior
-- liquidity imbalance
-- execution cost decomposition
-- venue routing
-- smart order slicing
-
-## Features
-
-### Real-Time Market Monitor
-- Simulated live market feed
-- Dynamic price movement
-- Level 2 order book visualization
-- Recent trade feed
-- Market condition tracking
-
-### Pre-Trade Slippage Estimation
-- Estimate slippage before execution
-- Market impact breakdown
-- Bid-ask cost breakdown
-- Opportunity cost estimation
-
-### Execution Algorithm Comparison
-Compare common execution strategies:
+It also demonstrates common execution strategies:
 
 - VWAP
 - TWAP
 - POV
 - Implementation Shortfall
 
-### Venue Routing
-Compare cost and execution quality across venues such as:
-
-- primary exchange
-- regional venue
-- dark pool
-- OTC market
-
-### Order Size Optimization
-- Slice large orders into smaller executions
-- Reduce expected market impact
-- Balance urgency vs cost
-
-### Cost Attribution Dashboard
-- Break down trading costs by component
-- Analyze market impact vs spread cost vs opportunity cost
-- Review simulated execution records
-
-### Execution Quality Dashboard
-- Track quality score
-- Compare algorithms by performance
-- Monitor slippage and execution time
-
-### Gamification
-- player registration
-- leaderboard
-- trade score tracking
-- achievement-style performance feedback
-
 ## Tech Stack
 
 ### Frontend
+
 - React
 - Vite
 - Zustand
@@ -95,6 +45,7 @@ Compare cost and execution quality across venues such as:
 - WebSocket client
 
 ### Backend
+
 - Python
 - FastAPI
 - Uvicorn
@@ -102,6 +53,7 @@ Compare cost and execution quality across venues such as:
 - NumPy
 
 ### Data and Tooling
+
 - SQLite for local development
 - PostgreSQL schema for production-style setup
 - Docker Compose
@@ -111,35 +63,19 @@ Compare cost and execution quality across venues such as:
 
 ```text
 trade-slippage-simulator/
-├── .github/workflows/        # CI workflow
-├── backend/                  # FastAPI backend, services, tests, persistence
-├── database/                 # Database schema and migrations
-├── docs/                     # Architecture and runbook docs
-├── frontend/                 # React frontend
-├── docker-compose.yml        # Local infrastructure setup
-├── start.sh                  # Startup helper
+├── .github/workflows/
+├── backend/
+├── database/
+├── docs/
+├── frontend/
+├── docker-compose.yml
+├── start.sh
 └── README.md
 ```
 
-## How It Works
+## Run Locally
 
-The application follows this flow:
-
-```text
-Frontend UI
-   ↓
-REST APIs + WebSocket updates
-   ↓
-Market simulation and execution engine
-   ↓
-Analytics, persistence, and leaderboard services
-```
-
-The frontend displays live and analytical views, while the backend simulates market behavior and computes execution-related metrics.
-
-## Local Setup
-
-### Backend
+### 1. Start the backend
 
 ```bash
 cd backend
@@ -153,7 +89,9 @@ Backend runs at:
 http://localhost:8000
 ```
 
-### Frontend
+### 2. Start the frontend
+
+Open a new terminal:
 
 ```bash
 cd frontend
@@ -161,11 +99,28 @@ npm install
 npm run dev
 ```
 
-Frontend runs at:
+Frontend usually runs at:
 
 ```text
 http://localhost:5173
 ```
+
+If that port is already busy, Vite may use another port such as:
+
+```text
+http://localhost:5174
+http://localhost:5175
+http://localhost:5176
+```
+
+Use the local URL shown in the terminal.
+
+### 3. Open the app
+
+After both servers are running:
+
+- open the frontend URL from the terminal
+- backend API docs are available at `http://localhost:8000/docs`
 
 ## Testing
 
@@ -183,15 +138,15 @@ cd frontend
 npm run build
 ```
 
-## API Documentation
+## API Docs
 
-Once the backend is running:
+Interactive backend docs:
 
 ```text
 http://localhost:8000/docs
 ```
 
-Health endpoint:
+Health check:
 
 ```text
 http://localhost:8000/health
@@ -202,38 +157,22 @@ http://localhost:8000/health
 This project can be used to demonstrate:
 
 - slippage analysis
-- market microstructure understanding
+- market microstructure concepts
 - execution strategy benchmarking
-- full-stack real-time dashboard development
+- full-stack real-time dashboard design
 - backend simulation architecture
-- trading analytics product design
-
-## Learning Outcomes
-
-By working on this project, I explored:
-
-- trading system simulation
-- execution cost modeling
-- real-time frontend/backend communication
-- dashboard-driven financial analytics
-- full-stack application architecture
-- portfolio-ready project packaging and deployment workflow
+- financial analytics product development
 
 ## Future Improvements
 
-Potential future upgrades include:
-
 - real PostgreSQL runtime integration
-- Redis-backed live state and leaderboard caching
+- Redis-backed live state caching
 - more realistic market data generation
-- portfolio-level analytics
 - authenticated user accounts
 - cloud deployment
+- additional execution benchmarks
 
 ## Author
 
 **Anuj Ojha**  
 GitHub: [Anuj7411](https://github.com/Anuj7411)
-```
-
-
