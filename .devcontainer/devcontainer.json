@@ -1,0 +1,16 @@
+{
+  "name": "trade-slippage-simulator",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "Anuj7411/helloooo": {
+          "permissions": {
+            "contents": "write",
+            "pull_requests": "write"
+          }
+        }
+      }
+    }
+  }
+}
