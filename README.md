@@ -8,3 +8,5 @@ I care about building things that solve concrete problems and hold up in the rea
 </p>
 
 ---
+
+# Repo is created for individual educational purpose
